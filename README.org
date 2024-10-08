@@ -1,0 +1,2 @@
+* About
+coc-damage-calculator package is meant to help Clash of Clans players to find the good combination of spells and equipements to deal the wanted damage to buildings.
