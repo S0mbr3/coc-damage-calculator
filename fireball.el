@@ -10,6 +10,7 @@
 
 (defun earthquake-damage-calculator (level number hp)
   "Calculate earthquake damage depending of NUMBER LEVEL and HP."
+  (interactive" nPress the level of the earthquake: \nnPress the number of earthquakes: \nnPress the hp of the building")
   (let* (( i 2)
 	 (damage
 	  (/ (* hp (earthquake-level-picker level)) 100) )
@@ -27,11 +28,12 @@
 
 (defun fireball-hp-building-left (level hp)
   "Calculate fireball damage by it's LEVEL building HP."
+  (interactive "nPress the level of the fireball: \nnPress the hp of the building: ")
   (- hp (fireball-level-picker level)))
 
 (defun fireball-and-earthquake-calculator (fireball-level earthquake-level earthquake-number hp)
   "Calculate damage FIREBALL-LEVEL EARTHQUAKE-LEVEL EARTHQUAKE-NUMBER HP."
-  (interactive "nPress the level of the fireball:\nnPress the level of the earthquake:\nnPress the number of earthquakes:\nnPress the hp of the building: ")
+  (interactive "nPress the level of the fireball: \nnPress the level of the earthquake: \nnPress the number of earthquakes: \nnPress the hp of the building: ")
   (print (- hp (fireball-level-picker fireball-level ) (earthquake-damage-calculator earthquake-level earthquake-number hp))))
 
 (provide 'fireball)
