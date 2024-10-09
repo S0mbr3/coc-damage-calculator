@@ -80,6 +80,11 @@
   (interactive "nPress the level of the rocket spear: \nnPress the hp of the building: ")
   (print (format "building hp left after rocket spear: %d" (- hp (rocket-spear-level-picker level)))))
 
+;;;###autoload
+(defun lightning-level-picker (level)
+  "Pick the good percentage for the lightning LEVEL."
+  (let ((levels '(150 180 210 240 270 320 400 480 560 600 640)))
+    (elt levels (1- level))))
 
 (provide 'coc-damage-calculator)
 ;;; coc-damage-calculator.el ends here
