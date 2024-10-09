@@ -74,5 +74,12 @@
   "Pick the good damage for the rocket spear LEVEL."
   (let ((levels '(350  350 420 420 420 490 490 490 560 560 560 630 630 630 700 700 700 770 770 770 840 840 840 910 910 910 980))) (elt levels (1- level))))
 
+;;;###autoload
+(defun rocket-hp-building-left (level hp)
+  "Calculate fireball damage by it's LEVEL building HP."
+  (interactive "nPress the level of the rocket spear: \nnPress the hp of the building: ")
+  (print (format "fireball building hp left: %d" (- hp (rocket-spear-level-picker level)))))
+
+
 (provide 'coc-damage-calculator)
 ;;; coc-damage-calculator.el ends here
