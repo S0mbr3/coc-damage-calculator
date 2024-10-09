@@ -78,7 +78,7 @@
 (defun rocket-hp-building-left (level hp)
   "Calculate fireball damage by it's LEVEL building HP."
   (interactive "nPress the level of the rocket spear: \nnPress the hp of the building: ")
-  (print (format "fireball building hp left: %d" (- hp (rocket-spear-level-picker level)))))
+  (print (format "building hp left after rocket spear: %d" (- hp (rocket-spear-level-picker level)))))
 
 
 (provide 'coc-damage-calculator)
