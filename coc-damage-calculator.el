@@ -86,5 +86,16 @@
   (let ((levels '(150 180 210 240 270 320 400 480 560 600 640)))
     (elt levels (1- level))))
 
+;;;###autoload
+(defun lightning-damage-calculator (level number)
+  "Calculate lightning damage depending of NUMBER LEVEL."
+  (let* ((i 2)
+	 (damage (lightning-level-picker level))
+	 (total damage))
+    (while (<= i number)
+      (setq total (+ total damage))
+      (setq i (1+ i)))
+    total))
+
 (provide 'coc-damage-calculator)
 ;;; coc-damage-calculator.el ends here
