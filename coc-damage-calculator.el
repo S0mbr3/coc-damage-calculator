@@ -115,5 +115,11 @@
   (interactive "nPress the level of the giant arrow: \nnPress the hp of the building: ")
   (print (format "building hp left after giant arrow: %d" (- hp (giant-arrow-level-picker level)))))
 
+;;;###autoload
+(defun spicky-ball-level-picker (level)
+  "Pick the good percentage for the lightning LEVEL."
+  (let ((levels '(1000 1000 1250 1250 1250 1500 1500 1500 1750 1750 1750 2000 2000 2000 2250 2250 2250 2500 2500 2500 2750 2750 2750 3000 3000 3000 3250)))
+    (elt levels (1- level))))
+
 (provide 'coc-damage-calculator)
 ;;; coc-damage-calculator.el ends here
