@@ -109,5 +109,11 @@
   (let ((levels '(750 750 850 850 850 1000 1000 1000 1200 1200 1200 1500 1500 1500 1750 1750 1750 1950)))
     (elt levels (1- level))))
 
+;;;###autoload
+(defun giant-arrow-hp-building-left (level hp)
+  "Calculate giant-arrow-spear damage by it's LEVEL and building HP."
+  (interactive "nPress the level of the giant arrow: \nnPress the hp of the building: ")
+  (print (format "building hp left after giant arrow: %d" (- hp (giant-arrow-level-picker level)))))
+
 (provide 'coc-damage-calculator)
 ;;; coc-damage-calculator.el ends here
