@@ -121,5 +121,11 @@
   (let ((levels '(1000 1000 1250 1250 1250 1500 1500 1500 1750 1750 1750 2000 2000 2000 2250 2250 2250 2500 2500 2500 2750 2750 2750 3000 3000 3000 3250)))
     (elt levels (1- level))))
 
+;;;###autoload
+(defun spicky-ball-hp-building-left (level hp)
+  "Calculate spicky ball damage by it's LEVEL and building HP."
+  (interactive "nPress the level of the spicky ball: \nnPress the hp of the building: ")
+  (print (format "building hp left after spicky ball: %d" (- hp (spicky-ball-level-picker level)))))
+
 (provide 'coc-damage-calculator)
 ;;; coc-damage-calculator.el ends here
