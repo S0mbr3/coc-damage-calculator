@@ -103,5 +103,11 @@
   (interactive "nPress the level of the lightning: \nnPress the hp of the building: ")
   (print (format "building hp left after lightning: %d" (- hp (lightning-level-picker level)))))
 
+;;;###autoload
+(defun giant-arrow-level-picker (level)
+  "Pick the good percentage for the lightning LEVEL."
+  (let ((levels '(750 750 850 850 850 1000 1000 1000 1200 1200 1200 1500 1500 1500 1750 1750 1750 1950)))
+    (elt levels (1- level))))
+
 (provide 'coc-damage-calculator)
 ;;; coc-damage-calculator.el ends here
