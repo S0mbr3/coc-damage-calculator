@@ -97,5 +97,11 @@
       (setq i (1+ i)))
     total))
 
+;;;###autoload
+(defun lightning-hp-building-left (level hp)
+  "Calculate lightning damage by it's LEVEL and building HP."
+  (interactive "nPress the level of the lightning: \nnPress the hp of the building: ")
+  (print (format "building hp left after lightning: %d" (- hp (lightning-level-picker level)))))
+
 (provide 'coc-damage-calculator)
 ;;; coc-damage-calculator.el ends here
