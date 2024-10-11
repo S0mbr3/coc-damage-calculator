@@ -139,5 +139,47 @@
   (interactive "nPress the level of the spicky ball: \nnPress the hp of the building: ")
   (print (format "The building has %d hp left" (- hp (spicky-ball-level-picker level)))))
 
+(defface hydra-title-face
+  '((t (:foreground "#FFA500" :weight bold :height 1.2)))
+  "Face for hydra titles.")
+
+(defface hydra-command-face
+  '((t (:foreground "#87CEEB")))
+  "Face for hydra commands.")
+
+;; Apply these faces
+(defhydra hydra-cool-menu (:color teal :hint nil)
+  "
+                            ██████╗ ██████╗  ██████╗    ██████╗        ██████╗
+                           ██╔════╝██╔═══██╗██╔════╝    ██╔══██╗      ██╔════╝
+                           ██║     ██║   ██║██║         ██║  ██║█████╗██║
+                           ██║     ██║   ██║██║         ██║  ██║╚════╝██║
+                           ╚██████╗╚██████╔╝╚██████╗    ██████╔╝      ╚██████╗
+                            ╚═════╝ ╚═════╝  ╚═════╝    ╚═════╝        ╚═════╝
+^^^
+^Equipements^      ^Spells^         ^Combined^
+^^^^^^^^-------------------------------------------------------
+_h_: ^^^^Fireball      _b_: ^^^^Earthquake  _w_: ^^^^Fireball and Earthquake
+_j_: ^^^^Giant arrow   _k_: ^^^^Lightning   _d_: ^^^^Fireball Earthquake Giant arrow
+_k_: ^^^^Rocket spear                 _c_: ^^^^Fireball And Giant arrow
+_l_: ^^^^Spicky ball
+"
+  ;; Equipements
+  ("h" fireball-hp-building-left :face hydra-command-face)
+  ("j" giant-arrow-hp-building-left :face hydra-command-face)
+  ("l" spicky-ball-hp-building-left :face hydra-command-face)
+
+  ;; Spells
+  ("b" earthquake-hp-building-left :face hydra-command-face)
+  ("k" lightning-hp-building-left :face hydra-command-face)
+
+  ;; Combined
+  ("w" fireball-and-earthquake-calculator :face hydra-command-face)
+  ("d" fireball-earthquake-arrow-calculator :face hydra-command-face)
+  ("c" fireball-and-arrow-calculator :face hydra-command-face)
+
+  ;; Quit
+  ("q" nil "quit" :color blue :face hydra-command-face))
+
 (provide 'coc-damage-calculator)
 ;;; coc-damage-calculator.el ends here
