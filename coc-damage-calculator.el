@@ -49,7 +49,7 @@
 (defun earthquake-hp-building-left (level number hp)
   "Calculate remaining building HP after NUMBER earthquakes of some LEVEL."
   (interactive "nPress the level of the earthquake:\nnPress the number of earthquakes:\nnPress the hp of the building:")
-  (print (format "earthquakes building hp left: %d" (- hp(earthquake-damage-calculator level number hp)))))
+  (print (format "The building has %d hp left" (- hp(earthquake-damage-calculator level number hp)))))
 
 ;;;###autoload
 (defun fireball-level-picker (level)
@@ -67,19 +67,19 @@
 (defun fireball-and-earthquake-calculator (fireball-level earthquake-level earthquake-number hp)
   "Calculate damage FIREBALL-LEVEL EARTHQUAKE-LEVEL EARTHQUAKE-NUMBER HP."
   (interactive "nPress the level of the fireball: \nnPress the level of the earthquake: \nnPress the number of earthquakes: \nnPress the hp of the building: ")
-  (print (- hp (fireball-level-picker fireball-level ) (earthquake-damage-calculator earthquake-level earthquake-number hp))))
+  (print (format "The building has %d hp left" (- hp (fireball-level-picker fireball-level ) (earthquake-damage-calculator earthquake-level earthquake-number hp)))))
 
 ;;;###autoload
 (defun fireball-and-arrow-calculator (fireball-level arrow-level  hp)
   "Calculate damage FIREBALL-LEVEL ARROW-LEVEL HP."
   (interactive "nPress the level of the fireball: \nnPress the level of the giant arrow: \nnPress the hp of the building: ")
-  (print (- hp (fireball-level-picker fireball-level ) (giant-arrow-level-picker arrow-level))))
+  (print (format "The building has %d hp left" (- hp (fireball-level-picker fireball-level ) (giant-arrow-level-picker arrow-level)))))
 
 ;;;###autoload
 (defun fireball-earthquake-arrow-calculator (fireball-level earthquake-level earthquake-number arrow-level hp)
   "Damage FIREBALL-LEVEL EARTHQUAKE-LEVEL EARTHQUAKE-NUMBER ARROW-LEVEL HP."
   (interactive "nPress the level of the fireball: \nnPress the level of the earthquake: \nnPress the number of earthquakes: \nnPress the level of the giant arrow: \nnPress the hp of the building: ")
-  (print (- hp (fireball-level-picker fireball-level ) (earthquake-damage-calculator earthquake-level earthquake-number hp) (giant-arrow-level-picker arrow-level))))
+  (print (format "The building has %d hp left" (- hp (fireball-level-picker fireball-level ) (earthquake-damage-calculator earthquake-level earthquake-number hp) (giant-arrow-level-picker arrow-level)))))
 
 ;;;###autoload
 (defun rocket-spear-level-picker (level)
@@ -90,7 +90,7 @@
 (defun rocket-hp-building-left (level hp)
   "Calculate rocket-spear damage by it's LEVEL and building HP."
   (interactive "nPress the level of the rocket spear: \nnPress the hp of the building: ")
-  (print (format "building hp left after rocket spear: %d" (- hp (rocket-spear-level-picker level)))))
+  (print (format "The building has %d left" (- hp (rocket-spear-level-picker level)))))
 
 ;;;###autoload
 (defun lightning-level-picker (level)
@@ -113,7 +113,7 @@
 (defun lightning-hp-building-left (level hp)
   "Calculate lightning damage by it's LEVEL and building HP."
   (interactive "nPress the level of the lightning: \nnPress the hp of the building: ")
-  (print (format "building hp left after lightning: %d" (- hp (lightning-level-picker level)))))
+  (print (format "The building has %d hp left" (- hp (lightning-level-picker level)))))
 
 ;;;###autoload
 (defun giant-arrow-level-picker (level)
@@ -125,7 +125,7 @@
 (defun giant-arrow-hp-building-left (level hp)
   "Calculate giant-arrow-spear damage by it's LEVEL and building HP."
   (interactive "nPress the level of the giant arrow: \nnPress the hp of the building: ")
-  (print (format "building hp left after giant arrow: %d" (- hp (giant-arrow-level-picker level)))))
+  (print (format "The building has %d hp left" (- hp (giant-arrow-level-picker level)))))
 
 ;;;###autoload
 (defun spicky-ball-level-picker (level)
@@ -137,7 +137,7 @@
 (defun spicky-ball-hp-building-left (level hp)
   "Calculate spicky ball damage by it's LEVEL and building HP."
   (interactive "nPress the level of the spicky ball: \nnPress the hp of the building: ")
-  (print (format "building hp left after spicky ball: %d" (- hp (spicky-ball-level-picker level)))))
+  (print (format "The building has %d hp left" (- hp (spicky-ball-level-picker level)))))
 
 (provide 'coc-damage-calculator)
 ;;; coc-damage-calculator.el ends here
