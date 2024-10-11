@@ -70,6 +70,12 @@
   (print (- hp (fireball-level-picker fireball-level ) (earthquake-damage-calculator earthquake-level earthquake-number hp))))
 
 ;;;###autoload
+(defun fireball-and-arrow-calculator (fireball-level arrow-level  hp)
+  "Calculate damage FIREBALL-LEVEL ARROW-LEVEL HP."
+  (interactive "nPress the level of the fireball: \nnPress the level of the giant arrow: \nnPress the hp of the building: ")
+  (print (- hp (fireball-level-picker fireball-level ) (giant-arrow-level-picker arrow-level))))
+
+;;;###autoload
 (defun fireball-earthquake-arrow-calculator (fireball-level earthquake-level earthquake-number arrow-level hp)
   "Damage FIREBALL-LEVEL EARTHQUAKE-LEVEL EARTHQUAKE-NUMBER ARROW-LEVEL HP."
   (interactive "nPress the level of the fireball: \nnPress the level of the earthquake: \nnPress the number of earthquakes: \nnPress the level of the giant arrow: \nnPress the hp of the building: ")
