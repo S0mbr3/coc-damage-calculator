@@ -23,3 +23,14 @@ To use correctly the ~Custom setup~ option you have to provide the setup order.
 - *a*: giant arrow
 - *s*: rocket spear
 - *b*: spicky ball
+
+* Installation
+With Straight.el
+#+begin_src emacs-lisp
+(use-package coc-damage-calculator
+  :straight '(coc-damage-calculator :host github
+                                    :repo "S0mbr3/coc-damage-calculator")
+  :init
+  (require 'hydra)
+  :bind (("C-c c" . hydra-coc-dc-menu/body)))
+#+end_src
