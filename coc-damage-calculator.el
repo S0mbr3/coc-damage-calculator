@@ -179,7 +179,7 @@
 ;; Apply these faces
 
 ;;;###autoload
-(defun coc-damage-calculator-hydra-coc-dc-menu ()
+(defun coc-damage-calculator-menu-hydra ()
   "Open coc-dc menu with hydra."
   (interactive)
   (require 'hydra)
