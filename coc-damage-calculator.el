@@ -139,6 +139,26 @@
   (interactive "nPress the level of the spicky ball: \nnPress the hp of the building: ")
   (print (format "The building has %d hp left" (- hp (spicky-ball-level-picker level)))))
 
+;;;###autoload
+(defun custom-hp-building-left (custom-setup)
+  )
+
+(defun parse-and-check-string (input-string)
+  "Parse the string and check for specific characters."
+  (let ((string-length (length input-string)))
+    (dotimes (i string-length)
+      (let ((char (aref input-string i)))
+        (cond
+         ((eq char ?f) (print (format "Found 'f' at index %d" i)))
+         ((eq char ?a) (print (format "Found 'a' at index %d" i)))
+         ((eq char ?s) (print (format "Found 's' at index %d" i)))
+         ((eq char ?b) (print (format "Found 'b' at index %d" i)))
+         ((eq char ?e) (print (format "Found 'e' at index %d" i)))
+         ((eq char ?l) (print (format "Found 'l' at index %d" i)))
+         (t (message "Other character '%c' at index %d" char i)))))))
+
+(parse-and-check-string "eellfa")
+
 (defface hydra-title-face
   '((t (:foreground "#FFA500" :weight bold :height 1.2)))
   "Face for hydra titles.")
