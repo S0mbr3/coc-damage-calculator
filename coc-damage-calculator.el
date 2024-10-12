@@ -189,8 +189,9 @@
   "Open coc-dc menu with hydra."
   (interactive)
   (require 'hydra)
-  (eval `(defhydra coc-hydra (:color teal :hint nil)
-	   "
+  (unless (fboundp 'coc-hydra/body)
+    (eval `(defhydra coc-hydra (:color teal :hint nil)
+	     "
                             ██████╗ ██████╗  ██████╗    ██████╗        ██████╗
                            ██╔════╝██╔═══██╗██╔════╝    ██╔══██╗      ██╔════╝
                            ██║     ██║   ██║██║         ██║  ██║█████╗██║
@@ -205,23 +206,23 @@ _j_: ^^^^Giant arrow   _k_: ^^^^Lightning   _d_: ^^^^Fireball Earthquake Giant a
 _k_: ^^^^Rocket spear                 _c_: ^^^^Fireball And Giant arrow
 _l_: ^^^^Spicky ball                  _f_: ^^^^Custom setup
 "
-	   ;; Equipements
-	   ("h" fireball-hp-building-left :face hydra-command-face)
-	   ("j" giant-arrow-hp-building-left :face hydra-command-face)
-	   ("l" spicky-ball-hp-building-left :face hydra-command-face)
+	     ;; Equipements
+	     ("h" fireball-hp-building-left :face hydra-command-face)
+	     ("j" giant-arrow-hp-building-left :face hydra-command-face)
+	     ("l" spicky-ball-hp-building-left :face hydra-command-face)
 
-	   ;; Spells
-	   ("b" earthquake-hp-building-left :face hydra-command-face)
-	   ("k" lightning-hp-building-left :face hydra-command-face)
+	     ;; Spells
+	     ("b" earthquake-hp-building-left :face hydra-command-face)
+	     ("k" lightning-hp-building-left :face hydra-command-face)
 
-	   ;; Combined
-	   ("w" fireball-and-earthquake-calculator :face hydra-command-face)
-	   ("d" fireball-earthquake-arrow-calculator :face hydra-command-face)
-	   ("c" fireball-and-arrow-calculator :face hydra-command-face)
-	   ("f" custom-hp-building-left :face hydra-command-face)
+	     ;; Combined
+	     ("w" fireball-and-earthquake-calculator :face hydra-command-face)
+	     ("d" fireball-earthquake-arrow-calculator :face hydra-command-face)
+	     ("c" fireball-and-arrow-calculator :face hydra-command-face)
+	     ("f" custom-hp-building-left :face hydra-command-face)
 
-	   ;; Quit
-	   ("q" nil "quit" :color blue :face hydra-command-face)))
+	     ;; Quit
+	     ("q" nil "quit" :color blue :face hydra-command-face))))
   (when (fboundp 'coc-hydra/body) (coc-hydra/body)))
 
 
