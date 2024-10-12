@@ -198,7 +198,7 @@
 _h_: ^^^^Fireball      _b_: ^^^^Earthquake  _w_: ^^^^Fireball and Earthquake
 _j_: ^^^^Giant arrow   _k_: ^^^^Lightning   _d_: ^^^^Fireball Earthquake Giant arrow
 _k_: ^^^^Rocket spear                 _c_: ^^^^Fireball And Giant arrow
-_l_: ^^^^Spicky ball
+_l_: ^^^^Spicky ball                  _f_: ^^^^Custom setup
 "
   ;; Equipements
   ("h" fireball-hp-building-left :face hydra-command-face)
@@ -213,6 +213,7 @@ _l_: ^^^^Spicky ball
   ("w" fireball-and-earthquake-calculator :face hydra-command-face)
   ("d" fireball-earthquake-arrow-calculator :face hydra-command-face)
   ("c" fireball-and-arrow-calculator :face hydra-command-face)
+  ("f" custom-hp-building-left :face hydra-command-face)
 
   ;; Quit
   ("q" nil "quit" :color blue :face hydra-command-face))
