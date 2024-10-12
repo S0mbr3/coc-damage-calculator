@@ -61,7 +61,7 @@
 (defun fireball-hp-building-left (level hp)
   "Calculate fireball damage by it's LEVEL building HP."
   (interactive "nPress the level of the fireball: \nnPress the hp of the building: ")
-  (print (format "building hp left after fireball: %d" (- hp (fireball-level-picker level)))))
+  (print (format "The building has %d hp left" (- hp (fireball-level-picker level)))))
 
 ;;;###autoload
 (defun fireball-and-earthquake-calculator (fireball-level earthquake-level earthquake-number hp)
