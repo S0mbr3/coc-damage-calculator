@@ -140,24 +140,40 @@
   (print (format "The building has %d hp left" (- hp (spicky-ball-level-picker level)))))
 
 ;;;###autoload
-(defun custom-hp-building-left (custom-setup)
-  )
-
-(defun parse-and-check-string (input-string)
-  "Parse the string and check for specific characters."
-  (let ((string-length (length input-string)))
+(defun custom-hp-building-left (input-string)
+  "Return the hp left of a building of a custom setup from the INPUT-STRING."
+  (interactive "sPress the custom setup: ")
+  (let ((string-length (length input-string))
+	(damage 0)
+	(hp (read-number "The hp of the building: ")))
     (dotimes (i string-length)
       (let ((char (aref input-string i)))
         (cond
-         ((eq char ?f) (print (format "Found 'f' at index %d" i)))
-         ((eq char ?a) (print (format "Found 'a' at index %d" i)))
-         ((eq char ?s) (print (format "Found 's' at index %d" i)))
-         ((eq char ?b) (print (format "Found 'b' at index %d" i)))
-         ((eq char ?e) (print (format "Found 'e' at index %d" i)))
-         ((eq char ?l) (print (format "Found 'l' at index %d" i)))
-         (t (message "Other character '%c' at index %d" char i)))))))
-
-(parse-and-check-string "eellfa")
+         ((eq char ?f)
+	  (setq damage
+		(+ damage (fireball-level-picker (read-number "Level of the fireball: ")))))
+         ((eq char ?a)
+	  (setq damage
+		(+ damage (giant-arrow-level-picker (read-number "Level of the giant arrow: ")))))
+         ((eq char ?s)
+	  (setq damage
+		(+ damage (rocket-spear-level-picker (read-number "Level of the rocket spear: ")))))
+         ((eq char ?b)
+	  (setq damage
+		(+ damage (spicky-ball-level-picker (read-number "Level of the spicky ball: ")))))
+         ((eq char ?e)
+	  (setq damage
+		(+ damage (earthquake-damage-calculator
+			   (read-number "Level of the earthquake: ")
+			   (read-number "Number of earthquakes: ")
+			   hp))))
+         ((eq char ?l)
+	  (setq damage
+		(+ damage (lightning-damage-calculator
+			   (read-number "Level of the lightning: ")
+			   (read-number "Number of lightnings: ")))))
+         (t (message "Other character '%c' at index %d" char i)))))
+    (print (format "The building as %d hp left" (- hp damage)))))
 
 (defface hydra-title-face
   '((t (:foreground "#FFA500" :weight bold :height 1.2)))
