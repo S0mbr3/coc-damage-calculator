@@ -93,8 +93,7 @@
   (let ((levels '(150 180 210 240 270 320 400 480 560 600 640)))
     (elt levels (1- level))))
 
-;;;###autoload
-(defun coc-damage-calculator-lightning-damage-calculator (level number)
+(defun coc-damage-calculator--lightning-damage-calculator (level number)
   "Calculate lightning damage depending of NUMBER LEVEL."
   (let* ((i 2)
 	 (damage (coc-damage-calculator--lightning-level-picker level))
@@ -108,7 +107,7 @@
 (defun coc-damage-calculator-lightning-hp-building-left (level number hp)
   "Calculate lightning damage by it's LEVEL NUMBER and building HP."
   (interactive "nPress the level of the lightning: \nnPress the number of lightnings:  \nnPress the hp of the building: ")
-  (print (format "The building has %d hp left" (- hp (coc-damage-calculator-lightning-damage-calculator level number)))))
+  (print (format "The building has %d hp left" (- hp (coc-damage-calculator--lightning-damage-calculator level number)))))
 
 (defun coc-damage-calculator--giant-arrow-level-picker (level)
   "Pick the good percentage for the lightning LEVEL."
@@ -162,7 +161,7 @@
 			   hp))))
          ((eq char ?l)
 	  (setq damage
-		(+ damage (coc-damage-calculator-lightning-damage-calculator
+		(+ damage (coc-damage-calculator--lightning-damage-calculator
 			   (read-number "Level of the lightning: ")
 			   (read-number "Number of lightnings: ")))))
          (t (message "Other character '%c' at index %d" char i)))))
