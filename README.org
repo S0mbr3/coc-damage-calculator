@@ -25,7 +25,11 @@ To use correctly the ~Custom setup~ option you have to provide the setup order.
 - *b*: spicky ball
 
 * Installation
-With Straight.el
+This package needs the [[https://github.com/abo-abo/hydra][hydra]] package to work.
+
+As the package is not yet on melpa or you clone the repo manually and load it, or you can use straight.el
+
+Straight
 #+begin_src emacs-lisp
 (use-package coc-damage-calculator
   :straight '(coc-damage-calculator :host github
@@ -33,4 +37,8 @@ With Straight.el
   :init
   (require 'hydra)
   :bind (("C-c c" . hydra-coc-dc-menu/body)))
+
+(use-package hydra
+  :straight t
+  :defer t)
 #+end_src
