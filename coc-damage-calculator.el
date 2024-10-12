@@ -1,8 +1,8 @@
 ;;; coc-damage-calculator.el -- A Clash of Clans damage calculator -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2024  Benjamin Denis
+;; Copyright (C) 2024  S0mbr3
 
-;; Author: Benjamin Denis <benjamin_denis@outlook.com>
+;; Author: S0mbr3 <0xf2f@proton.me>
 ;; Keywords: coc damage calculator
 ;; Homepage: https://github.com/S0mbr3/coc-damage-calculator
 ;; Version: 0.1
