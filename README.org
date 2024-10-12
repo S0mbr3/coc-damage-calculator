@@ -31,14 +31,14 @@ As the package is not yet on melpa or you clone the repo manually and load it, o
 
 Straight
 #+begin_src emacs-lisp
+(use-package hydra
+  :straight t
+  :defer t)
+
 (use-package coc-damage-calculator
   :straight '(coc-damage-calculator :host github
                                     :repo "S0mbr3/coc-damage-calculator")
   :init
   (require 'hydra)
   :bind (("C-c c" . hydra-coc-dc-menu/body)))
-
-(use-package hydra
-  :straight t
-  :defer t)
 #+end_src
