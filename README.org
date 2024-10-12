@@ -1,2 +1,25 @@
 * About
-coc-damage-calculator package is meant to help Clash of Clans players to find the good combination of spells and equipements to deal the wanted damage to buildings.
+coc-damage-calculator package is meant to help Clash of Clans players to quickly calculate damages to buildings from various equipements and spells.
+
+It provides an hydra menu to select the options.
+
+[[./coc-dc.png]]
+
+* Usage
+
+Just press the options you need and fill the informations needed.
+
+If you want to know if you are gonna down a building using different spells level (earthquakes or lightnings)
+use the ~Custom setup~ option alwayse use the higher earthquakes level to optimize damage.
+
+** Custom setup
+To use correctly the ~Custom setup~ option you have to provide the setup order.
+
+[[./custom-setup.png]]
+
+- *e*: earthquake
+- *l*: lightning
+- *f*: fireball
+- *a*: giant arrow
+- *s*: rocket spear
+- *b*: spicky ball
