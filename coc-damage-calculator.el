@@ -105,10 +105,10 @@
     total))
 
 ;;;###autoload
-(defun coc-damage-calculator-lightning-hp-building-left (level hp)
-  "Calculate lightning damage by it's LEVEL and building HP."
-  (interactive "nPress the level of the lightning: \nnPress the hp of the building: ")
-  (print (format "The building has %d hp left" (- hp (coc-damage-calculator--lightning-level-picker level)))))
+(defun coc-damage-calculator-lightning-hp-building-left (level number hp)
+  "Calculate lightning damage by it's LEVEL NUMBER and building HP."
+  (interactive "nPress the level of the lightning: \nnPress the number of lightnings:  \nnPress the hp of the building: ")
+  (print (format "The building has %d hp left" (- hp (coc-damage-calculator-lightning-damage-calculator level number)))))
 
 (defun coc-damage-calculator--giant-arrow-level-picker (level)
   "Pick the good percentage for the lightning LEVEL."
