@@ -184,7 +184,7 @@
   "Face for hydra commands.")
 
 ;; Apply these faces
-(defhydra hydra-cool-menu (:color teal :hint nil)
+(defhydra hydra-coc-dc-menu (:color teal :hint nil)
   "
                             ██████╗ ██████╗  ██████╗    ██████╗        ██████╗
                            ██╔════╝██╔═══██╗██╔════╝    ██╔══██╗      ██╔════╝
