@@ -5,7 +5,7 @@
 ;; Author: S0mbr3 <0xf2f@proton.me>
 ;; Keywords: games
 ;; Homepage: https://github.com/S0mbr3/coc-damage-calculator
-;; Version: 0.1
+;; Version: 1
 ;; Package-Requires: ((emacs "27.2") (hydra "0.14.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
