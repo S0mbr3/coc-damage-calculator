@@ -222,8 +222,8 @@ LEVEL is the level of the spicky ball."
 
 LEVEL is the level of the spicky ball.
 HP is the building hp targeted."
-  (interactive "nPress the level of the spicky ball: \nn
-Press the hp of the building: ")
+  (interactive "nPress the level of the spicky ball: \n\
+nPress the hp of the building: ")
   (print (format "The building has %d hp left"
 		 (- hp (coc-dc--spicky-ball-level-picker level)))))
 
