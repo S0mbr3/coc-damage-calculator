@@ -1,4 +1,4 @@
-;;; coc-damage-calculator.el --- A Clash of Clans damage calculator -*- lexical-binding: t; -*-
+;;; coc-dc.el --- A Clash of Clans damage calculator -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2024  S0mbr3
 
@@ -29,14 +29,14 @@
 
 (require 'hydra)
 
-(defun coc-damage-calculator--earthquake-level-picker (level)
+(defun coc-dc--earthquake-level-picker (level)
   "Pick the percentage for the earthquakes.
 
 LEVEL is the level of the earthquakes."
   (let ((levels '(14.5 17 21 25 29)))
     (elt levels (1- level))))
 
-(defun coc-damage-calculator--earthquake-damage-calculator (level number hp)
+(defun coc-dc--earthquake-damage-calculator (level number hp)
   "Calculate earthquakes damage.
 
 LEVEL is the level of the earthquake.
@@ -44,7 +44,7 @@ NUMBER is how many earthquakes used.
 HP is the building hp targeted."
   (let* (( i 2)
 	 (damage
-	  (/ (* hp (coc-damage-calculator--earthquake-level-picker level)) 100) )
+	  (/ (* hp (coc-dc--earthquake-level-picker level)) 100) )
 	 (first damage)
 	 (total first))
     (while (<= i number)
@@ -52,7 +52,7 @@ HP is the building hp targeted."
       (setq i (1+ i)))
     total))
 
-(defun coc-damage-calculator-earthquake-hp-building-left (level number hp)
+(defun coc-dc-earthquake-hp-building-left (level number hp)
   "Calculate the remaining building hp after earthquakes attacks.
 
 LEVEL is the level of the earthquakes.
@@ -62,9 +62,9 @@ HP is the building hp targeted."
 nPress the number of earthquakes:\n\
 nPress the hp of the building:")
   (print (format "The building has %d hp left"
-		 (- hp(coc-damage-calculator--earthquake-damage-calculator level number hp)))))
+		 (- hp(coc-dc--earthquake-damage-calculator level number hp)))))
 
-(defun coc-damage-calculator--fireball-level-picker (level)
+(defun coc-dc--fireball-level-picker (level)
   "Pick the good damage for the fireball LEVEL."
   (let ((levels '(1500 1500 1700 1700 1800 1950 1950 2050 2200
 		       2200 2350 2650 2650 2750 3100 3100 3250
@@ -73,7 +73,7 @@ nPress the hp of the building:")
     (elt levels (1- level))))
 
 
-(defun coc-damage-calculator-fireball-hp-building-left (level hp)
+(defun coc-dc-fireball-hp-building-left (level hp)
   "Calculate the remaining buld hp after fireball attack.
 
 LEVEL is the level of the fireball.
@@ -81,9 +81,9 @@ HP is the bulding hp targeted."
   (interactive "nPress the level of the fireball: \n\
 nPress the hp of the building: ")
   (print (format "The building has %d hp left"
-		 (- hp (coc-damage-calculator--fireball-level-picker level)))))
+		 (- hp (coc-dc--fireball-level-picker level)))))
 
-(defun coc-damage-calculator-fireball-and-earthquake-calculator
+(defun coc-dc-fireball-and-earthquake-calculator
     (fireball-level earthquake-level earthquake-number hp)
   "Calculate the remaining HP of a building after fireball and earthquake damage.
 
@@ -96,11 +96,11 @@ nPress the level of the earthquake: \n\
 nPress the number of earthquakes: \n\
 nPress the hp of the building: ")
   (print (format "The building has %d hp left"
-		 (- hp (coc-damage-calculator--fireball-level-picker fireball-level )
-		    (coc-damage-calculator--earthquake-damage-calculator
+		 (- hp (coc-dc--fireball-level-picker fireball-level )
+		    (coc-dc--earthquake-damage-calculator
 		     earthquake-level earthquake-number hp)))))
 
-(defun coc-damage-calculator-fireball-and-arrow-calculator
+(defun coc-dc-fireball-and-arrow-calculator
     (fireball-level arrow-level  hp)
   "Calculate the remaining HP of a building after fireball and giant arrow damage.
 
@@ -111,10 +111,10 @@ HP is the initial hit points of the building."
 nPress the level of the giant arrow: \n\
 nPress the hp of the building: ")
   (print (format "The building has %d hp left"
-		 (- hp (coc-damage-calculator--fireball-level-picker fireball-level)
-		    (coc-damage-calculator--giant-arrow-level-picker arrow-level)))))
+		 (- hp (coc-dc--fireball-level-picker fireball-level)
+		    (coc-dc--giant-arrow-level-picker arrow-level)))))
 
-(defun coc-damage-calculator-fireball-earthquake-arrow-calculator
+(defun coc-dc-fireball-earthquake-arrow-calculator
     (fireball-level earthquake-level earthquake-number arrow-level hp)
   "Calculate the remaining HP of a building after the following setup:
 -fireball, giant arrow and earthquake.
@@ -130,14 +130,14 @@ nPress the number of earthquakes: \n\
 nPress the level of the giant arrow: \n\
 nPress the hp of the building: ")
   (print (format "The building has %d hp left"
-		 (- hp (coc-damage-calculator--fireball-level-picker
+		 (- hp (coc-dc--fireball-level-picker
 			fireball-level)
-		    (coc-damage-calculator--earthquake-damage-calculator
+		    (coc-dc--earthquake-damage-calculator
 		     earthquake-level earthquake-number hp)
-		    (coc-damage-calculator--giant-arrow-level-picker
+		    (coc-dc--giant-arrow-level-picker
 		     arrow-level)))))
 
-(defun coc-damage-calculator--rocket-spear-level-picker (level)
+(defun coc-dc--rocket-spear-level-picker (level)
   "Pick the damage for the rocket spear.
 
 LEVEL is the level of the rocket spear."
@@ -146,7 +146,7 @@ LEVEL is the level of the rocket spear."
 		       840 840 910 910 910 980)))
     (elt levels (1- level))))
 
-(defun coc-damage-calculator-rocket-hp-building-left (level hp)
+(defun coc-dc-rocket-hp-building-left (level hp)
   "Calculate the remaining hp of a building after a rocket spear attack.
 
 LEVEL is the level of the rocket spear.
@@ -154,30 +154,30 @@ HP is the building hp targeted."
   (interactive "nPress the level of the rocket spear: \n\
 nPress the hp of the building: ")
   (print (format "The building has %d left"
-		 (- hp (coc-damage-calculator--rocket-spear-level-picker level)))))
+		 (- hp (coc-dc--rocket-spear-level-picker level)))))
 
-(defun coc-damage-calculator--lightning-level-picker (level)
+(defun coc-dc--lightning-level-picker (level)
   "Pick the percentage for the lightning spell.
 
 LEVEL is the level of the lightning spell."
   (let ((levels '(150 180 210 240 270 320 400 480 560 600 640)))
     (elt levels (1- level))))
 
-(defun coc-damage-calculator--lightning-damage-calculator (level number)
+(defun coc-dc--lightning-damage-calculator (level number)
   "Calculate lightnings damage.
 
 LEVEL is the level of the lightning spell.
 NUMBER is how many lightnings used.
 HP is the building hp targeted."
   (let* ((i 2)
-	 (damage (coc-damage-calculator--lightning-level-picker level))
+	 (damage (coc-dc--lightning-level-picker level))
 	 (total damage))
     (while (<= i number)
       (setq total (+ total damage))
       (setq i (1+ i)))
     total))
 
-(defun coc-damage-calculator-lightning-hp-building-left (level number hp)
+(defun coc-dc-lightning-hp-building-left (level number hp)
   "Calculate the remaining hp of a building after lightnings attacks.
 
 LEVEL is the level of the lightning spells.
@@ -187,9 +187,9 @@ HP is the building hp targeted."
 nPress the number of lightnings:  \n\
 nPress the hp of the building: ")
   (print (format "The building has %d hp left"
-		 (- hp (coc-damage-calculator--lightning-damage-calculator level number)))))
+		 (- hp (coc-dc--lightning-damage-calculator level number)))))
 
-(defun coc-damage-calculator--giant-arrow-level-picker (level)
+(defun coc-dc--giant-arrow-level-picker (level)
   "Pick the damage for the giant arrow.
 
 LEVEL is the level of the giant arrow."
@@ -197,7 +197,7 @@ LEVEL is the level of the giant arrow."
 		      1200 1500 1500 1500 1750 1750 1750 1950)))
     (elt levels (1- level))))
 
-(defun coc-damage-calculator-giant-arrow-hp-building-left (level hp)
+(defun coc-dc-giant-arrow-hp-building-left (level hp)
   "Calculate the remaining hp of a building after a giant arrow attack.
 
 LEVEL is the level of the giant arrow.
@@ -205,9 +205,9 @@ HP is the building hp targeted."
   (interactive "nPress the level of the giant arrow: \n\
 nPress the hp of the building: ")
   (print (format "The building has %d hp left"
-		 (- hp (coc-damage-calculator--giant-arrow-level-picker level)))))
+		 (- hp (coc-dc--giant-arrow-level-picker level)))))
 
-(defun coc-damage-calculator--spicky-ball-level-picker (level)
+(defun coc-dc--spicky-ball-level-picker (level)
   "Pick the damage for the spicky ball.
 
 LEVEL is the level of the spicky ball."
@@ -217,7 +217,7 @@ LEVEL is the level of the spicky ball."
 		       3000 3250)))
     (elt levels (1- level))))
 
-(defun coc-damage-calculator-spicky-ball-hp-building-left (level hp)
+(defun coc-dc-spicky-ball-hp-building-left (level hp)
   "Calculate the remaining hp of a building after a spicky ball attack.
 
 LEVEL is the level of the spicky ball.
@@ -225,9 +225,9 @@ HP is the building hp targeted."
   (interactive "nPress the level of the spicky ball: \nn
 Press the hp of the building: ")
   (print (format "The building has %d hp left"
-		 (- hp (coc-damage-calculator--spicky-ball-level-picker level)))))
+		 (- hp (coc-dc--spicky-ball-level-picker level)))))
 
-(defun coc-damage-calculator-custom-hp-building-left (input-string)
+(defun coc-dc-custom-hp-building-left (input-string)
   "Calculate the hp left of a building after a custom setup.
 
 INPUT-STRING is the custom setup used to calculate the damage.
@@ -241,7 +241,8 @@ a: giant arrow
 s: rocket spear
 b: spicky ball
 
-EG:'eelfa' will apply 2 sets of earthquakes one lightning set a fireball and a giant arrow."
+EG:'eelfa' will apply:
+- 2 sets of earthquakes one lightning set a fireball and a giant arrow."
   (interactive "sPress the custom setup: ")
   (let ((string-length (length input-string))
 	(damage 0)
@@ -251,44 +252,44 @@ EG:'eelfa' will apply 2 sets of earthquakes one lightning set a fireball and a g
         (cond
          ((eq char ?f)
 	  (setq damage
-		(+ damage (coc-damage-calculator--fireball-level-picker
+		(+ damage (coc-dc--fireball-level-picker
 			   (read-number "Level of the fireball: ")))))
          ((eq char ?a)
 	  (setq damage
-		(+ damage (coc-damage-calculator--giant-arrow-level-picker
+		(+ damage (coc-dc--giant-arrow-level-picker
 			   (read-number "Level of the giant arrow: ")))))
          ((eq char ?s)
 	  (setq damage
-		(+ damage (coc-damage-calculator--rocket-spear-level-picker
+		(+ damage (coc-dc--rocket-spear-level-picker
 			   (read-number "Level of the rocket spear: ")))))
          ((eq char ?b)
 	  (setq damage
-		(+ damage (coc-damage-calculator--spicky-ball-level-picker
+		(+ damage (coc-dc--spicky-ball-level-picker
 			   (read-number "Level of the spicky ball: ")))))
          ((eq char ?e)
 	  (setq damage
-		(+ damage (coc-damage-calculator--earthquake-damage-calculator
+		(+ damage (coc-dc--earthquake-damage-calculator
 			   (read-number "Level of the earthquake: ")
 			   (read-number "Number of earthquakes: ")
 			   hp))))
          ((eq char ?l)
 	  (setq damage
-		(+ damage (coc-damage-calculator--lightning-damage-calculator
+		(+ damage (coc-dc--lightning-damage-calculator
 			   (read-number "Level of the lightning: ")
 			   (read-number "Number of lightnings: ")))))
          (t (message "Other character '%c' at index %d" char i)))))
     (print (format "The building has %d hp left" (- hp damage)))))
 
-(defface coc-damage-calculator-hydra-title-face
+(defface coc-dc-hydra-title-face
   '((t (:foreground "#FFA500" :weight bold :height 1.2)))
   "Face for hydra titles.")
 
-(defface coc-damage-calculator-hydra-command-face
+(defface coc-dc-hydra-command-face
   '((t (:foreground "#87CEEB")))
   "Face for hydra commands.")
 
 ;;;###autoload
-(defun coc-damage-calculator-menu()
+(defun coc-dc-menu()
   "Open coc-dc menu with hydra."
   (interactive)
   (unless (fboundp 'coc-hydra/body)
@@ -309,43 +310,43 @@ EG:'eelfa' will apply 2 sets of earthquakes one lightning set a fireball and a g
   _l_: ^^^^Spicky ball                  _f_: ^^^^Custom setup
   "
 	     ;; Equipements
-	     ("h" coc-damage-calculator-fireball-hp-building-left
-	      :face coc-damage-calculator-hydra-command-face)
+	     ("h" coc-dc-fireball-hp-building-left
+	      :face coc-dc-hydra-command-face)
 
-	     ("j" coc-damage-calculator-giant-arrow-hp-building-left
-	      :face coc-damage-calculator-hydra-command-face)
+	     ("j" coc-dc-giant-arrow-hp-building-left
+	      :face coc-dc-hydra-command-face)
 
-	     ("s" coc-damage-calculator-rocket-hp-building-left
-	      :face coc-damage-calculator-hydra-command-face)
+	     ("s" coc-dc-rocket-hp-building-left
+	      :face coc-dc-hydra-command-face)
 
-	     ("l" coc-damage-calculator-spicky-ball-hp-building-left
-	      :face coc-damage-calculator-hydra-command-face)
+	     ("l" coc-dc-spicky-ball-hp-building-left
+	      :face coc-dc-hydra-command-face)
 
 	     ;; Spells
-	     ("b" coc-damage-calculator-earthquake-hp-building-left
-	      :face coc-damage-calculator-hydra-command-face)
+	     ("b" coc-dc-earthquake-hp-building-left
+	      :face coc-dc-hydra-command-face)
 
-	     ("k" coc-damage-calculator-lightning-hp-building-left
-	      :face coc-damage-calculator-hydra-command-face)
+	     ("k" coc-dc-lightning-hp-building-left
+	      :face coc-dc-hydra-command-face)
 
 	     ;; Combined
-	     ("w" coc-damage-calculator-fireball-and-earthquake-calculator
-	      :face coc-damage-calculator-hydra-command-face)
+	     ("w" coc-dc-fireball-and-earthquake-calculator
+	      :face coc-dc-hydra-command-face)
 
-	     ("d" coc-damage-calculator-fireball-earthquake-arrow-calculator
-	      :face coc-damage-calculator-hydra-command-face)
+	     ("d" coc-dc-fireball-earthquake-arrow-calculator
+	      :face coc-dc-hydra-command-face)
 
-	     ("c" coc-damage-calculator-fireball-and-arrow-calculator
-	      :face coc-damage-calculator-hydra-command-face)
+	     ("c" coc-dc-fireball-and-arrow-calculator
+	      :face coc-dc-hydra-command-face)
 
-	     ("f" coc-damage-calculator-custom-hp-building-left
-	      :face coc-damage-calculator-hydra-command-face)
+	     ("f" coc-dc-custom-hp-building-left
+	      :face coc-dc-hydra-command-face)
 
 	     ;; Quit
 	     ("q" nil "quit" :color blue
-	      :face coc-damage-calculator-hydra-command-face))))
+	      :face coc-dc-hydra-command-face))))
   (when (fboundp 'coc-hydra/body) (coc-hydra/body)))
 
+(provide 'coc-dc)
 
-(provide 'coc-damage-calculator)
-;;; coc-damage-calculator.el ends here
+;;; coc-dc.el ends here
