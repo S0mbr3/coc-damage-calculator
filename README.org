@@ -36,9 +36,9 @@ Straight
   :defer t)
 
 (use-package coc-damage-calculator
-  :straight '(coc-damage-calculator :host github
+  :straight '(coc-dc :host github
                                     :repo "S0mbr3/coc-damage-calculator")
   :init
   (require 'hydra)
-  :bind (("C-c c" . hydra-coc-dc-menu/body)))
+  :bind (("C-c c" . coc-dc-menu)))
 #+end_src
