@@ -27,15 +27,26 @@ To use correctly the ~Custom setup~ option you have to provide the setup order.
 * Installation
 This package needs the [[https://github.com/abo-abo/hydra][hydra]] package to work.
 
-As the package is not yet on melpa or you clone the repo manually and load it, or you can use straight.el
+** For MELPA installation with use-package.
+#+begin_src emacs-lisp
+(use-package hydra
+  :ensure t
+  :defer t)
 
-Straight
+(use-package coc-dc
+  :ensure t
+  :init
+  (require 'hydra)
+  :bind (("C-c c" . coc-dc-menu)))
+#+end_src
+
+** Using Straight fetching directly from the repo.
 #+begin_src emacs-lisp
 (use-package hydra
   :straight t
   :defer t)
 
-(use-package coc-damage-calculator
+(use-package coc-dc
   :straight '(coc-dc :host github
                                     :repo "S0mbr3/coc-damage-calculator")
   :init
