@@ -58,9 +58,9 @@ HP is the building hp targeted."
 LEVEL is the level of the earthquakes.
 NUMBER is how many earthquakes used.
 HP is the building hp targeted."
-  (interactive "nPress the level of the earthquake:\n\
-nPress the number of earthquakes:\n\
-nPress the hp of the building:")
+  (interactive "nEnter the level of the earthquake:\n\
+nEnter the number of earthquakes:\n\
+nEnter the hp of the building:")
   (print (format "The building has %d hp left"
 		 (- hp(coc-dc--earthquake-damage-calculator level number hp)))))
 
@@ -78,8 +78,8 @@ nPress the hp of the building:")
 
 LEVEL is the level of the fireball.
 HP is the bulding hp targeted."
-  (interactive "nPress the level of the fireball: \n\
-nPress the hp of the building: ")
+  (interactive "nEnter the level of the fireball: \n\
+nEnter the hp of the building: ")
   (print (format "The building has %d hp left"
 		 (- hp (coc-dc--fireball-level-picker level)))))
 
@@ -91,10 +91,10 @@ FIREBALL-LEVEL is the level of the fireball attack.
 EARTHQUAKE-LEVEL is the level of the earthquake attack.
 EARTHQUAKE-NUMBER is the number of consecutive earthquake attacks.
 HP is the initial hit points of the building."
-  (interactive "nPress the level of the fireball: \n\
-nPress the level of the earthquake: \n\
-nPress the number of earthquakes: \n\
-nPress the hp of the building: ")
+  (interactive "nEnter the level of the fireball: \n\
+nEnter the level of the earthquake: \n\
+nEnter the number of earthquakes: \n\
+nEnter the hp of the building: ")
   (print (format "The building has %d hp left"
 		 (- hp (coc-dc--fireball-level-picker fireball-level )
 		    (coc-dc--earthquake-damage-calculator
@@ -107,9 +107,9 @@ nPress the hp of the building: ")
 FIREBALL-LEVEL is the level of the fireball.
 ARROW-LEVEL is the level of giant arrow.
 HP is the initial hit points of the building."
-  (interactive "nPress the level of the fireball: \n\
-nPress the level of the giant arrow: \n\
-nPress the hp of the building: ")
+  (interactive "nEnter the level of the fireball: \n\
+nEnter the level of the giant arrow: \n\
+nEnter the hp of the building: ")
   (print (format "The building has %d hp left"
 		 (- hp (coc-dc--fireball-level-picker fireball-level)
 		    (coc-dc--giant-arrow-level-picker arrow-level)))))
@@ -124,11 +124,11 @@ ARROW-LEVEL is the level of giant arrow.
 EARTHQUAKE-LEVEL is the level of the earthquake.
 EARTHQUAKE-NUMBER is the level of the earthquake.
 HP is the initial hit points of the building."
-  (interactive "nPress the level of the fireball: \n\
-nPress the level of the earthquake: \n\
-nPress the number of earthquakes: \n\
-nPress the level of the giant arrow: \n\
-nPress the hp of the building: ")
+  (interactive "nEnter the level of the fireball: \n\
+nEnter the level of the earthquake: \n\
+nEnter the number of earthquakes: \n\
+nEnter the level of the giant arrow: \n\
+nEnter the hp of the building: ")
   (print (format "The building has %d hp left"
 		 (- hp (coc-dc--fireball-level-picker
 			fireball-level)
@@ -151,8 +151,8 @@ LEVEL is the level of the rocket spear."
 
 LEVEL is the level of the rocket spear.
 HP is the building hp targeted."
-  (interactive "nPress the level of the rocket spear: \n\
-nPress the hp of the building: ")
+  (interactive "nEnter the level of the rocket spear: \n\
+nEnter the hp of the building: ")
   (print (format "The building has %d left"
 		 (- hp (coc-dc--rocket-spear-level-picker level)))))
 
@@ -183,9 +183,9 @@ HP is the building hp targeted."
 LEVEL is the level of the lightning spells.
 NUMBER is how many lightnings used.
 HP is the building hp targeted."
-  (interactive "nPress the level of the lightning: \n\
-nPress the number of lightnings:  \n\
-nPress the hp of the building: ")
+  (interactive "nEnter the level of the lightning: \n\
+nEnter the number of lightnings:  \n\
+nEnter the hp of the building: ")
   (print (format "The building has %d hp left"
 		 (- hp (coc-dc--lightning-damage-calculator level number)))))
 
@@ -202,30 +202,30 @@ LEVEL is the level of the giant arrow."
 
 LEVEL is the level of the giant arrow.
 HP is the building hp targeted."
-  (interactive "nPress the level of the giant arrow: \n\
-nPress the hp of the building: ")
+  (interactive "nEnter the level of the giant arrow: \n\
+nEnter the hp of the building: ")
   (print (format "The building has %d hp left"
 		 (- hp (coc-dc--giant-arrow-level-picker level)))))
 
-(defun coc-dc--spicky-ball-level-picker (level)
-  "Pick the damage for the spicky ball.
+(defun coc-dc--spiky-ball-level-picker (level)
+  "Pick the damage for the spiky ball.
 
-LEVEL is the level of the spicky ball."
+LEVEL is the level of the spiky ball."
   (let ((levels '(1000 1000 1250 1250 1250 1500 1500 1500 1750
 		       1750 1750 2000 2000 2000 2250 2250 2250
 		       2500 2500 2500 2750 2750 2750 3000 3000
 		       3000 3250)))
     (elt levels (1- level))))
 
-(defun coc-dc-spicky-ball-hp-building-left (level hp)
-  "Calculate the remaining hp of a building after a spicky ball attack.
+(defun coc-dc-spiky-ball-hp-building-left (level hp)
+  "Calculate the remaining hp of a building after a spiky ball attack.
 
-LEVEL is the level of the spicky ball.
+LEVEL is the level of the spiky ball.
 HP is the building hp targeted."
-  (interactive "nPress the level of the spicky ball: \n\
-nPress the hp of the building: ")
+  (interactive "nEnter the level of the spiky ball: \n\
+nEnter the hp of the building: ")
   (print (format "The building has %d hp left"
-		 (- hp (coc-dc--spicky-ball-level-picker level)))))
+		 (- hp (coc-dc--spiky-ball-level-picker level)))))
 
 (defun coc-dc-custom-hp-building-left (input-string)
   "Calculate the hp left of a building after a custom setup.
@@ -239,11 +239,11 @@ l: lightning
 f: fireball
 a: giant arrow
 s: rocket spear
-b: spicky ball
+b: spiky ball
 
 EG:'eelfa' will apply:
 - 2 sets of earthquakes one lightning set a fireball and a giant arrow."
-  (interactive "sPress the custom setup: ")
+  (interactive "sEnter the custom setup: ")
   (let ((string-length (length input-string))
 	(damage 0)
 	(hp (read-number "The hp of the building: ")))
@@ -264,8 +264,8 @@ EG:'eelfa' will apply:
 			   (read-number "Level of the rocket spear: ")))))
          ((eq char ?b)
 	  (setq damage
-		(+ damage (coc-dc--spicky-ball-level-picker
-			   (read-number "Level of the spicky ball: ")))))
+		(+ damage (coc-dc--spiky-ball-level-picker
+			   (read-number "Level of the spiky ball: ")))))
          ((eq char ?e)
 	  (setq damage
 		(+ damage (coc-dc--earthquake-damage-calculator
@@ -307,7 +307,7 @@ EG:'eelfa' will apply:
   _h_: ^^^^Fireball      _b_: ^^^^Earthquake  _w_: ^^^^Fireball and Earthquake
   _j_: ^^^^Giant arrow   _k_: ^^^^Lightning   _d_: ^^^^Fireball Earthquake Giant arrow
   _s_: ^^^^Rocket spear                 _c_: ^^^^Fireball And Giant arrow
-  _l_: ^^^^Spicky ball                  _f_: ^^^^Custom setup
+  _l_: ^^^^Spiky ball                  _f_: ^^^^Custom setup
   "
 	     ;; Equipements
 	     ("h" coc-dc-fireball-hp-building-left
@@ -319,7 +319,7 @@ EG:'eelfa' will apply:
 	     ("s" coc-dc-rocket-hp-building-left
 	      :face coc-dc-hydra-command-face)
 
-	     ("l" coc-dc-spicky-ball-hp-building-left
+	     ("l" coc-dc-spiky-ball-hp-building-left
 	      :face coc-dc-hydra-command-face)
 
 	     ;; Spells
